@@ -1,6 +1,6 @@
 {
   "name": "correios-zebra-js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Módulo NPM para impressão de etiquetas dos correios em impressoras zebra usando a linguagem ZPL II",
   "main": "src/index.js",
   "scripts": {
