@@ -1,0 +1,27 @@
+{
+  "name": "correios-zebra-js",
+  "version": "0.1.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon ./src/demo/index.js",
+    "debug": "nodemon --inspect src/demo/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bwip-js": "^2.0.6",
+    "deasync": "^0.1.20",
+    "fs": "^0.0.1-security",
+    "net": "^1.0.2",
+    "node-printer": "^1.0.4",
+    "pngjs": "^5.0.0",
+    "zpl-image": "^0.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "engines": {
+    "node": "12.x.x"
+  }
+}
