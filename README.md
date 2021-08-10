@@ -1,4 +1,4 @@
-# correios-zebra-js
+# correios-zpl-js
 Um módulo node para impressão de etiquetas dos correios em impressoras Zebra (rede ou USB) usando a linguagem ZPL II.
 
 # Instalação:
