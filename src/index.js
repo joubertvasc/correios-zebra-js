@@ -22,6 +22,18 @@ module.exports = class CorreiosZPL {
       );
     }
 
+    const zplCode = this.zplCode(obj);
+
+    return this.print(obj.options, zplCode);
+  }
+
+  zplCode(obj) {
+    if (!obj || !obj.label) {
+      throw new Error(
+        "O parâmetro necessário não foi repassado corretamente, por favor revise as instruções."
+      );
+    }
+
     const options = obj.options;
     const label = this.prepareFields(obj.label);
 
@@ -155,7 +167,7 @@ module.exports = class CorreiosZPL {
         
         ^XZ`;
 
-    return this.print(obj.options, zplCode);
+    return zplCode;
   }
 
   print(options, zplCode) {
