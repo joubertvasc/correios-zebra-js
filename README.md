@@ -1,14 +1,6 @@
 # correios-zpl-js
 Um módulo node para impressão de etiquetas dos correios em impressoras Zebra (rede ou USB) usando a linguagem ZPL II.
 
-# Instalação:
-
-npm install correios-zebra-js
-
-ou
-
-yarn add correios-zebra-js
-
 # Pré-Requisitos
 
 As fontes Arial e ArialBold precisam estar instaladas na impressora e devem ter os nomes ARI000.FNT e ARI001.FNT respectivamente.
@@ -87,6 +79,7 @@ const obj = {
 };
 
 try {
+  correiosZpl.zplCode(obj);
   correiosZpl.printLabel(obj);
 } catch (err) {
   console.log(err);
