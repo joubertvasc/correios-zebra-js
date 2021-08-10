@@ -1,5 +1,5 @@
 {
-  "name": "correios-zebra-js",
+  "name": "correios-zpl-js",
   "version": "0.1.3",
   "description": "Módulo NPM para impressão de etiquetas dos correios em impressoras zebra usando a linguagem ZPL II",
   "main": "src/index.js",
@@ -7,7 +7,7 @@
     "start": "nodemon ./src/demo/index.js",
     "debug": "nodemon --inspect src/demo/index.js"
   },
-  "author": "Joubert Vasconcelos",
+  "author": "xjfox",
   "license": "ISC",
   "dependencies": {
     "bwip-js": "^2.0.6",
@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/joubertvasc/correios-zebra-js.git"
+    "url": "git+https://github.com/xjfox/correios-zpl-js.git"
   },
   "keywords": [
     "zebra",
@@ -36,7 +36,7 @@
     "label"
   ],
   "bugs": {
-    "url": "https://github.com/joubertvasc/correios-zebra-js/issues"
+    "url": "https://github.com/xjfox/correios-zpl-js/issues"
   },
-  "homepage": "https://github.com/joubertvasc/correios-zebra-js#readme"
+  "homepage": "https://github.com/xjfox/correios-zpl-js#readme"
 }
