@@ -1,6 +1,5 @@
 const bwipjs = require('bwip-js'); // Barcode and QRCode
 const fs = require('fs');
-const Deasync = require('deasync');
 
 module.exports = class Barcode {
   static generateQRCode(text, backgroundColor = 'FFFFFF') {
@@ -23,7 +22,7 @@ module.exports = class Barcode {
     );
 
     while (base64 == undefined) {
-      Deasync.sleep(100);
+      new Promise(resolve => setTimeout(resolve, 100));
     }
 
     return base64;
@@ -60,7 +59,7 @@ module.exports = class Barcode {
     );
 
     while (base64 == undefined) {
-      Deasync.sleep(100);
+      new Promise(resolve => setTimeout(resolve, 100));
     }
 
     return base64;
