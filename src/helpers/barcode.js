@@ -21,16 +21,12 @@ module.exports = class Barcode {
           }
         }
       );
-      });
+    });
 
-      while (!base64) {
-        new Promise(resolve => setTimeout(resolve, 100));
-      }
-
-      return base64;
+    return base64;
   }
 
-  static generateBarcode(
+  static async generateBarcode(
     text,
     type,
     height,
@@ -40,29 +36,27 @@ module.exports = class Barcode {
   ) {
     let base64;
 
-    bwipjs.toBuffer(
-      {
-        bcid: type,
-        text: text,
-        scale: 3,
-        height: height,
-        width: width,
-        includetext: showText,
-        textxalign: 'center',
-        backgroundcolor: backgroundColor,
-      },
-      function(err, png) {
-        if (err) {
-          base64 = '';
-        } else {
-          base64 = png.toString('base64');
+    base64 = await new Promise((resolve, reject) => { 
+      bwipjs.toBuffer(
+        {
+          bcid: type,
+          text: text,
+          scale: 3,
+          height: height,
+          width: width,
+          includetext: showText,
+          textxalign: 'center',
+          backgroundcolor: backgroundColor,
+        },
+        function(err, png) {
+          if (err) {
+            resolve('');
+          } else {
+            resolve(png.toString('base64'));
+          }
         }
-      }
-    );
-
-    while (base64 == undefined) {
-      new Promise(resolve => setTimeout(resolve, 100));
-    }
+      );
+    });
 
     return base64;
   }
