@@ -2,8 +2,10 @@ const bwipjs = require('bwip-js'); // Barcode and QRCode
 const fs = require('fs');
 
 module.exports = class Barcode {
-  static generateQRCode(text, backgroundColor = 'FFFFFF') {
-    return new Promise((resolve, reject) => {
+  static async generateQRCode(text, backgroundColor = 'FFFFFF') {
+    let base64;
+
+    base64 = await new Promise((resolve, reject) => { 
       bwipjs.toBuffer(
         {
           bcid: 'datamatrix',
@@ -19,7 +21,13 @@ module.exports = class Barcode {
           }
         }
       );
-    });
+      });
+
+      while (!base64) {
+        new Promise(resolve => setTimeout(resolve, 100));
+      }
+
+      return base64;
   }
 
   static generateBarcode(
@@ -59,11 +67,11 @@ module.exports = class Barcode {
     return base64;
   }
 
-  static generateQRCodeFile(file, text, backgroundColor = 'FFFFFF') {
+  static async generateQRCodeFile(file, text, backgroundColor = 'FFFFFF') {
     try {
       fs.writeFileSync(
         file,
-        this.generateQRCode(text, backgroundColor),
+        await this.generateQRCode(text, backgroundColor),
         'base64'
       );
       return true;
