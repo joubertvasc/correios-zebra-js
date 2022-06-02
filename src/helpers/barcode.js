@@ -3,29 +3,23 @@ const fs = require('fs');
 
 module.exports = class Barcode {
   static generateQRCode(text, backgroundColor = 'FFFFFF') {
-    let base64;
-
-    bwipjs.toBuffer(
-      {
-        bcid: 'datamatrix',
-        text: text,
-        backgroundcolor: backgroundColor,
-        scale: 4,
-      },
-      function(err, png) {
-        if (err) {
-          base64 = '';
-        } else {
-          base64 = png.toString('base64');
+    return new Promise((resolve, reject) => {
+      bwipjs.toBuffer(
+        {
+          bcid: 'datamatrix',
+          text: text,
+          backgroundcolor: backgroundColor,
+          scale: 4,
+        },
+        function(err, png) {
+          if (err) {
+            resolve('');
+          } else {
+            resolve(png.toString('base64'));
+          }
         }
-      }
-    );
-
-    while (base64 == undefined) {
-      new Promise(resolve => setTimeout(resolve, 100));
-    }
-
-    return base64;
+      );
+    });
   }
 
   static generateBarcode(
