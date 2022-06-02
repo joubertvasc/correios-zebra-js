@@ -29,7 +29,7 @@ module.exports = class CorreiosZPL {
     options.darknessLevel = options.darknessLevel || 20;
 
     let mailLogo = ZPL_LOGO_PAC;
-    const zplQRCode = this.generateZplQrCode(obj);
+    const zplQRCode = await this.generateZplQrCode(obj);
 
     if (label.serviceName.toUpperCase().includes("CARTA")) {
       mailLogo = ZPL_LOGO_REGISTERED_LETTER;
@@ -232,11 +232,11 @@ module.exports = class CorreiosZPL {
     }
   }
 
-  generateZplQrCode(obj) {
+  async generateZplQrCode(obj) {
     let qrFile = "";
     try {
       qrFile = FileWrapper.randomFileNames(obj.options.workDir, 10, ".png");
-      const qrCodeFile = Barcode.generateQRCodeFile(
+      const qrCodeFile = await Barcode.generateQRCodeFile(
         obj.options.workDir + "/" + qrFile,
         this.makeQRString(obj.label)
       );
